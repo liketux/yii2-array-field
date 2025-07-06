@@ -1,14 +1,12 @@
 <?php
-/**
- * @link https://github.com/Tigrov/yii2-array-field
- * @author Sergei Tigrov <rrr-r@ya.ru>
- */
+
 namespace tigrov\arrayField;
 
-use yii\bootstrap\ActiveField;
-use yii\bootstrap\Html;
+use yii\bootstrap5\ActiveField;
+use yii\bootstrap5\Html;
+use yii\helpers\ArrayHelper;
 use yii\web\JsExpression;
-use yii\widgets\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 
 /**
  * ArrayField is a form field class for attributes with array values
@@ -33,8 +31,7 @@ class ArrayField extends ActiveField
     /** @inheritDoc */
     public $options = ['class' => 'form-group array-field-group'];
 
-    /** @var int count of new attribute fields to display */
-    public $showNewFields = 0;
+    public $showNewFields = 1;
 
     /** @var bool if true it will show the field as input group */
     public $isInputGroup = false;
@@ -405,7 +402,7 @@ class ArrayField extends ActiveField
     /**
      * @inheritDoc
      */
-    public function render($content = null)
+    public function render($content = null): string
     {
         if ($content === null) {
             if ($this->inputTemplate) {
@@ -422,7 +419,7 @@ class ArrayField extends ActiveField
     /**
      * @inheritDoc
      */
-    public function staticControl($options = [])
+    public function staticControl($options = []): ActiveField
     {
         $this->adjustLabelFor($options);
 
